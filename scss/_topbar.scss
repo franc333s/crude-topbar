@@ -1,0 +1,161 @@
+@mixin mq($bp: $bp-medium, $bp-width: min-width) {
+    @media all and ($bp-width: $bp) {
+        @content;
+    }
+}
+
+
+
+// REMOVE STYLES
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+
+
+.topbar {
+  background-color: $color-bg-beige;
+  border: none;
+  border-bottom: 2px $color-black solid;
+  text-transform: uppercase;
+  font-size: $font-size-small;
+  z-index: 3;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: center;
+  //width: calc(50% + 28px);
+  justify-content: space-between;
+}
+
+
+
+  
+  
+  
+  .topbar--mobile {
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 2rem;
+  
+    &__menu {
+      font-size: $font-size-small;
+      border: none;
+      padding: 0;
+    }
+  
+    &__logo {
+      flex-grow: 1;
+    }
+  
+    &__cart {
+      
+    }
+  
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      background-color: $color-bg-green;
+      opacity: 0.95;
+      color: $color-black;
+      
+      justify-content: center;
+      align-items: center;
+  
+      list-style: none;
+      text-align: center;
+      padding: 2.8rem 0;
+  
+      position: absolute;
+      inset: 0 0 auto 0;
+      width: 100vw;
+      height: 100vh;
+  
+      transition: all .4s ease;
+  
+  
+  
+      &__item {
+        padding: 3.2rem 0;
+        font-size: $font-size-uppermedium;
+        font-weight: $font-weight-light;
+  
+        &:hover {
+          font-style: italic;
+          font-weight: $font-weight-bold;
+        }
+      }
+  
+      
+    }
+
+  }
+  
+  
+  img {
+    height: 44px;
+  }
+  
+  
+  .topbar--desktop {
+    justify-content: space-between;
+    padding: 1.6rem 4rem;
+    align-items: center;
+  
+  
+    @include mq($bp-large) {
+      //min width 1440
+      padding: 1.6rem 8rem;
+    }
+  
+    @include mq($bp-xlarge) {
+      //min width 1920
+      padding: 1.6rem 10rem;
+    }
+  
+    @include mq(767px, max-width) {
+      //max width 767
+      display: none;
+    }
+  
+    &__nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 4rem;
+  
+      list-style: none;
+      padding-left: 0;
+      
+    }
+  
+  }
+  
+  // Clases para js del menú desplegable
+  
+  .jsHide {
+    //display: none;
+    left: -100%;
+  }
+  
